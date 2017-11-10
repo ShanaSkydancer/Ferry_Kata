@@ -1,0 +1,37 @@
+{
+  "name": "ferry_kata",
+  "version": "1.0.0",
+  "description": "Ferry Kata project for Object Oriented Programming exercise.",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "config.json": "^0.0.4",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.2",
+    "express-flash": "^0.0.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "jquery": "^3.2.1",
+    "mocha": "^3.5.3",
+    "mongoose": "^4.13.0",
+    "node": "^8.9.0",
+    "node-modules": "^1.0.1",
+    "node-sass": "^4.6.0",
+    "sass": "^1.0.0-beta.3"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShanaSkydancer/Ferry_Kata/issues"
+  },
+  "homepage": "https://github.com/ShanaSkydancer/Ferry_Kata#readme"
+}
