@@ -1,50 +1,56 @@
 'use strict';
 
 module.exports = class Ferry {
-    constructor(car, ferryPassenger, people_count, color){
-        this.car = car;
-        this.ferryPassenger = ferryPassenger;
-        this.people_count = people_count;
-        this.color = color;
+    constructor(maxCars, maxPassengers){
+        this.maxCars = maxCars;
+        this.maxPassengers = maxPassengers;
+        this.ferryRides = {};
+        this.allCars = [];
+        this.allPassengers = 0;
     }
 
-    board(){
-        var allPassengers = [];
-        var ferryPassenger = 0;
-        var max = 100;
-            if(ferryPassenger <= max){
-                allPassengers.push({Car});
-                return "Accepted";
-                // console.log("Accepted");
-            } else if(allPassengers.Car.regi_Num === 3){
-                return "Half price!"
-            } else if(allPassengers.Car.regi_Num === 7){
-                return "You go free!"
-            } else {
-                return "Rejected";
-                // console.log("Rejected");
-            }
+    getCar(car){
+        this.allCars.push({
+            color : car.car_Color(),
+            car_passenger : car.car_Passengers(),
+            regi_Num : car.regi_Number()
+        })
+    }
+
+    board(car){
+        if(! this.ferryRides[car.regi_Number()]){
+            this.ferryRides[car.regi_Number()] = 0;
+        }
+        
+        if(this.ferryRides[car.regi_Number()] === 3){
+            // this.ferryRides[car.regi_Number()] = 0;
+            return "Half price!"
+        }
+        
+        if(this.ferryRides[car.regi_Number()] === 7){
+            // this.ferryRides[car.regi_Number()] = 0;
+            return "You go free!"
+        }
+        
+        if(car.car_Passengers() + this.allPassengers > this.maxPassengers || this.allCars.length >= this.maxCars){
+            return "Rejected";
+        }
+        
+        this.getCar(car);
+        this.ferryRides[car.regi_Number()]++;
+            return "Accepted";
     }
 
     car_Count(){
-        var count = 0;
-        let car = count ++;
-        return this.car; 
-        console.log(car);
+        return this.maxCars;
     }
 
     people_Count(){
-        return this.people_count;
-        console.log(people_count);
+        return this.maxPassengers;
     }
 
-    car_Color(){
-        var count = 0;
-        if(color = this.color){
-            count ++;
-            return count;
-        } else {
-            return count;
-        }
+    certain_Color(color){
+        return this.allCars.filter((car) => car.color === color).length;
     }
+    
 }
